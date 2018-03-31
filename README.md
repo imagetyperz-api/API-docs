@@ -593,7 +593,8 @@ We've designed a captcha gate, which allows you to redirect traffic from other c
 - anti-captcha.com
 
 ### Redirection
-The gates are redirecting the following actions to our service:balance
+The gates are redirecting the following actions to our service:
+
 - get balance
 - submit image captcha
 - retrieve image captcha
