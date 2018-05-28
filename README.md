@@ -423,7 +423,7 @@ There are few optional parameters as well.
 >
 > - affiliateid = ***affiliateID*** ```- optional```
 >
-> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies like this: ```user:password@12.34.56.78:1234```*** ```- optional```
+> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
 >
 > - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
 > -------
@@ -445,7 +445,7 @@ There are few optional parameters as well.
 >
 > - affiliateid = ***affiliateID*** ```- optional```
 >
-> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies like this: ```user:password@12.34.56.78:1234```*** ```- optional```
+> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies like this: ```12.34.56.78:1234:user:password```*** ```- optional```
 >
 > - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
 
