@@ -421,9 +421,17 @@ There are few optional parameters as well.
 >
 > - action = UPLOADCAPTCHA
 >
+> - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
+>
+> - captchaaction = action parameter used in solving v3 recaptcha `- optional`
+>
+> - score = score targeted, check being done against a test recaptcha `- optional`
+>
 > - affiliateid = ***affiliateID*** ```- optional```
 >
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+>
+>- useragent = User-Agent used in solving recaptcha `- optional`
 >
 > - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
 > -------
@@ -443,12 +451,19 @@ There are few optional parameters as well.
 >
 > - action = UPLOADCAPTCHA
 >
+> - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
+>
+> - captchaaction = action parameter used in solving v3 recaptcha `- optional`
+>
+> - score = score targeted, check being done against a test recaptcha `- optional`
+>
 > - affiliateid = ***affiliateID*** ```- optional```
 >
-> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies like this: ```12.34.56.78:1234:user:password```*** ```- optional```
+> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+>
+>- useragent = User-Agent used in solving recaptcha `- optional`
 >
 > - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
-
 
 **Response**
 
@@ -566,7 +581,55 @@ The ```captchaID``` that was wrong has to be sent along with the authentication 
 
 In case of success, server will respond with ```SUCCESS```
 
-**Errors**
+### Was proxy used
+
+A way to check if proxy submitted with captcha was used in solving
+
+Can be used only after captcha is completed, and can be also used to get gresponse
+> Access token authentication
+
+>```/POST /captchaAPI/GetReCaptchaTextJSON.ashx```
+
+> **Parameters**
+> 
+> - token = ***your_access_token***
+>
+> - captchaid = ***```captchaID``` - captcha id that you want to check proxy for***
+>
+> - action = GETTEXT
+> -------
+> Username & password authentication
+
+>```/POST /captchaAPI/GetReCaptchaTextTokenJSON.ashx```
+
+> **Parameters**
+> 
+> - username = ***your_username***
+>
+> - password = ***your_password***
+>
+> - captchaid = ***```captchaID``` - captcha id that you want to check proxy for***
+>
+> - action = GETTEXT
+
+**Responses**
+
+```json
+{	"Proxy_worker":"12.34.56.78:4321",
+	"Result":"03AE...gMofH2rqQ6bFG",
+	"Proxy_client":"12.34.56.78:4321",
+	"Proxy_reason":""
+}
+```
+
+If you submitted a proxy and it wasn't used, `Proxy_reason` will contain the error of why the proxy wasn't used.
+
+`Proxy_worker` contains proxy used by worker. `Proxy_client` being the proxy value submitted with the captcha. 
+
+When proxy was successfully used they should both contain the same value.
+
+
+### Errors
 
 -```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access token are invalid.
 
