@@ -24,7 +24,7 @@ A fast and easy way to integrate our service inside your program
 Each library comes with an example
 ### C-sharp
 
-Library can be installed using [NuGet](https://www.nuget.org/packages/imagetyperzapi/), especially if you're using Visual Studio, this will make things much more easier
+Library can be installed using [NuGet](https://www.nuget.org/packages/imagetyperz-api-latest/), especially if you're using Visual Studio, this will make things much more easier
 
 The github repository contains a ***binary*** folder as well, which contains the library files already compiled.
 
@@ -32,7 +32,7 @@ Github repository contains a **cli** application as well, which is a ***windows 
 
 > Install using nuget
 ```
-Install-Package imagetyperzapi
+Install-Package imagetyperz-api-latest
 ```
 
 > Clone from github
