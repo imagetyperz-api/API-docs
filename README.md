@@ -242,7 +242,7 @@ This is Google's rcaptcha. It's the 2nd version and it's what most websites are 
 
 Similar to V2, but different. With this type of reCaptcha, the front-end user gets asked to complete a captcha while form gets submitted, so user `doesn't know` there's a robot verification, until form is submitted.
 
-### reCaptcha V3
+### reCaptcha V3 (NEW)
 
 Latest type of reCaptcha from Google that as of today **22 Aug 2018** is still in beta testing (from what Google advertises)
 
