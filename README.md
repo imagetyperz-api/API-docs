@@ -224,6 +224,32 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-ubot
 
 > [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-ubot/archive/master.zip)
 
+Types of captcha
+----
+### Image captcha
+
+This is the regular captcha, which we all know, all are familiar with. Those that look like this:
+
+![image captcha] (http://i.imgur.com/EAvBjai.png)
+
+This were one of the 1st type of captchas. Their time is almost over, but some websites are still using it and we're still providing solving solution for this as well.
+
+### reCaptcha V2 (regular)
+
+This is Google's rcaptcha. It's the 2nd version and it's what most websites are using nowadays. It's the captcha that asks you to pick street signs, cars, and so on. Using the libraries while submiting a recaptcha defaults the completion of recaptcha to this type.
+
+### reCaptcha V2 (invisible)
+
+Similar to V2, but different. With this type of reCaptcha, the front-end user gets asked to complete a captcha while form gets submitted, so user `doesn't know` there's a robot verification, until form is submitted.
+
+### reCaptcha V3
+
+Latest type of reCaptcha from Google that as of today **22 Aug 2018** is still in beta testing (from what Google advertises)
+
+This reCaptcha somewhat different because it doesn't ask the user anything (for now), but rather Google makes use of the users `experience` with Google services, and returns a token. That token, when verified with the secretkey by the webmaster also returns a score that ranges from `0.1` to `0.9`, `0.9` being the best score and `0.1` the worst.
+
+We're providing solving solutions for this reCaptcha as well, although we are also just like Google into beta testing, as Google goes along too.
+
 Endpoints
 --------------
 If the above libraries do not satisfy your needs, you can build your own library/class, to handle the captcha completion.
@@ -304,7 +330,7 @@ In case of **success**, server will respond with the accounts current balance in
 
 - ```ERROR: INVALID_PASSWORD``` - if the password is not provide, this will be returned.
 
-### Regular captcha
+### Image captcha (classic)
 
 Use this enpoint if you want to solve a image captcha. That is, an image with captcha text in it. 
 
@@ -396,7 +422,7 @@ Eg.  ```123|polum```
 - ```ERROR: NOT_DECODED``` - The captcha has timedout
 
 
-### Submit recaptcha
+### Submit reCaptcha
 
 In order to solve recaptcha v2 and invisible, there are **2 steps** that have to be made.
 
@@ -485,7 +511,7 @@ This ```captchaID``` will be used in the 2nd step, to retrieve the g-response af
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-### Retrieve recaptcha response
+### Retrieve reCaptcha response
 
 Once you have the ```captchaID```, you can start checking for the g-response.
 
