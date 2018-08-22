@@ -230,7 +230,7 @@ Types of captcha
 
 This is the regular captcha, which we all know, all are familiar with. Those that look like this:
 
-![image captcha] (http://i.imgur.com/EAvBjai.png)
+![image captcha](http://i.imgur.com/EAvBjai.png)
 
 This were one of the 1st type of captchas. Their time is almost over, but some websites are still using it and we're still providing solving solution for this as well.
 
