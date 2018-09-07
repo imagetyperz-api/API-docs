@@ -668,6 +668,14 @@ When proxy was successfully used they should both contain the same value.
 -```ERROR: INVALID_IMAGE_ID``` - Not provided image id or Provided invalid image id.
 
 
+Proxies
+----------
+In case you're submitting the reCaptchas with proxies, check for gresponse validity. In case gresponse token is not valid, change the proxy because
+it might be banned by Google.
+
+You can also check if proxy was used or not by using the [was proxy used](#was-proxy-used) methods available in our API libraries and API.
+
+
 Automation examples
 ------------------------------
 We've made automation examples for both normal and invisible recaptcha, with and without browser. The examples can be found [here](https://www.imagetyperz.com/Forms/recaptcha_automation.aspx)
