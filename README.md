@@ -254,6 +254,14 @@ Endpoints
 --------------
 If the above libraries do not satisfy your needs, you can build your own library/class, to handle the captcha completion.
 
+The **base** endpoint is `http://www.captchatypers.com`
+
+When you see something like this `/POST /Forms/RequestBalanceToken.ashx` it's actually 
+
+```
+/POST http://www.captchatypers.com/Forms/RequestBalanceToken.ashx
+```
+
 ### Authentication
 In order to use our service, one has to make a  **HTTP POST** request to our server, which will respond accordingly, depending on what was requested.
 
