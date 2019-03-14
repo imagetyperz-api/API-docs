@@ -338,7 +338,7 @@ In case of **success**, server will respond with the accounts current balance in
 
 - ```ERROR: INVALID_PASSWORD``` - if the password is not provide, this will be returned.
 
-### Image captcha (classic)
+## Image captcha (classic)
 
 Use this enpoint if you want to solve a image captcha. That is, an image with captcha text in it. 
 
@@ -430,7 +430,9 @@ Eg.  ```123|polum```
 - ```ERROR: NOT_DECODED``` - The captcha has timedout
 
 
-### Submit reCaptcha
+## reCAPTCHA
+
+### Submit reCAPTCHA
 
 In order to solve recaptcha v2 and invisible, there are **2 steps** that have to be made.
 
@@ -578,6 +580,127 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 - ```ERROR: NOT_INVISIBLE``` - Captcha is not invisible
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## GeeTest
+
+### Submit GeeTest
+
+GeeTest is anothe captcha that our service can handle.
+
+Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and using that ID periodically to check for completion.
+> Access token authentication
+
+>```GET /captchaapi/UploadGeeTestToken.ashx?action=UPLOADCAPTCHA&domain=geetest_domain&challenge=geetest_challenge&gt=geetest_gt&username=your_username&password=your_password&affiliateid=your_affiliate_id[optional]```
+
+> **Parameters**
+>
+> - token = ***your access token***
+>
+> - domain = ***geetest captcha domain***
+>
+> - challenge = ***geetest captcha challenge key***
+>
+> - gt = ***geetest captcha gt key***
+>
+> - action = UPLOADCAPTCHA
+>
+> - affiliateid = ***affiliateID*** ```- optional```
+>
+> - user_agent = ***user agent goes here*** ```- optional```
+>
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+>
+> -------
+> Username & password authentication
+
+>```GET /captchaapi/UploadGeeTest.ashx?action=UPLOADCAPTCHA&domain=geetest_domain&challenge=geetest_challenge&gt=geetest_gt&username=your_username&password=your_password&affiliateid=your_affiliate_id[optional]```
+
+> **Parameters**
+>
+> - username = ***your username***
+>
+> - password = ***your password***
+>
+> - domain = ***geetest captcha domain***
+>
+> - challenge = ***geetest captcha challenge key***
+>
+> - gt = ***geetest captcha gt key***
+>
+> - action = UPLOADCAPTCHA
+>
+> - affiliateid = ***affiliateID*** ```- optional```
+>
+> - user_agent = ***user agent goes here*** ```- optional```
+>
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+
+**Response**
+
+`captchaID` is returned back. Use that to retrieve the 3 geetest keys, once completed.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_GEETEST_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+### Retrieve GeeTest response
+
+Once you have the ```captchaID```, you can start checking for the g-response.
+
+Usually, it takes ~10 seconds for our workers to complete the captcha.
+
+The idea is to check regulary if the ID was completed. It's safe to check every 5 seconds for the response, in other words make the request every 5 seconds.
+
+> Access token authentication
+
+>```GET /captchaapi/getrecaptchatext.ashx?token=your_access_token&captchaID=your_captcha_ID&action=GETTEXT```
+
+> **Parameters**
+> 
+> - token = ***your_access_token***
+>
+> - captchaID = ***```captchaID``` gathered before***
+>
+> - action = GETTEXT
+> -------
+> Username & password authentication
+
+>```GET /captchaapi/getrecaptchatext.ashx?username=your_username&password=your_password&captchaID=your_captcha_ID&action=GETTEXT```
+
+> **Parameters**
+> 
+> - username = ***your_username***
+>
+> - password = ***your_password***
+>
+> - captchaID = ***```captchaID``` gathered before***
+>
+> - action = GETTEXT
+
+
+**Responses**
+
+Once the geetest captcha was successfully completed by our workers you will get 3 codes back.
+
+They're formatted like this in the response: ***challenge;;;validate;;;seccode*** 
+
+ie. `a70928569b0666a987bec2c0003ac2cfb4;;;32d47af0b8cf8c029ba698cb074ceecd;;;32d47af0b8cf8c029ba698cb074ceecd|jordan`
+
+Use the 3 codes to bypass the geetest captcha.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_GEETEST_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## Other
 
 ### Set captcha bad
 
