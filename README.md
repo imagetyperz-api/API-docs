@@ -597,6 +597,15 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
+## Capy
+
+### IMPORTANT
+For this captcha, the reCAPTCHA endpoints are used (endpoints explained above), except that there's one small difference.
+
+The `pageurl` parameter should have at the end of it `--capy` added. This instructs our system it's a capy captcha. This is a temporar change. It will be changed in the future, to have it's own endpoints.
+
+For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy`. Capy requires a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA endpoints.
+
 ## GeeTest
 
 ### Submit GeeTest
