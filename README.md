@@ -250,6 +250,12 @@ This reCaptcha somewhat different because it doesn't ask the user anything (for 
 
 We're providing solving solutions for this reCaptcha as well, although we are also just like Google into beta testing, as Google goes along too.
 
+### GeeTest 
+Next major captcha that came out after Google's reCAPTCHA. This captcha, asks the user to complete puzzle. When the puzzle is completed, three codes are sent back and needed in order to validate it.
+
+### Capy
+The newest, same as Geetest, requires to solve a puzzle. A response is generated, which looks like mouse coordinates of the solving of captcha. The more the mouse/puzzle piece is moved in order to solve the captcha, the bigger the response is.
+
 Endpoints
 --------------
 If the above libraries do not satisfy your needs, you can build your own library/class, to handle the captcha completion.
@@ -363,9 +369,19 @@ The parameter ```chkCase``` in the requests, if set to 1, will tell our workers 
 >
 > - action = UPLOADCAPTCHA
 >
-> - chkCase = ***1 in case it's sensitive*** ```- optional```
+> - iscase = `true`, if image captcha text is case-sensitive `- optional`
 >
-> - affiliateid = ***affiliateID*** ```- optional```
+> - isphrase = `true`, text contains at least one space `- optional`
+>
+> - ismath = `true`, instructs worker that a math captcha has to be calculated `- optional`
+>
+> - alphanumeric = `1`, captcha text contains digits only or `2` if it contains letters only `- optional`
+>
+> - minlength = `number` - minimum text length, `0` is default, if defined, give bigger or equal to `1` `- optional`
+>
+> - maxlength = `number` - maximum text length, `0` is default (disabled), if defined it should be bigger than `minlength` `- optional`
+>
+> - affiliateid = ***affiliateID*** `- optional`
 > -------
 > Access token authentication (HTTP URL)
 > 
