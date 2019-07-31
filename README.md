@@ -354,8 +354,6 @@ In order to use this endpoint, the image file has to be sent encoded as a base64
 
 If you authenticate with access token, you can send a HTTP URL instead of the base64 string. The request has to be made to a different endpoint though.
 
-The parameter ```chkCase``` in the requests, if set to 1, will tell our workers that the captcha is case sensitive, and it has to be completed so.
-
 
 > Access token authentication (base 64)
 
@@ -395,9 +393,19 @@ The parameter ```chkCase``` in the requests, if set to 1, will tell our workers 
 >
 > - action = UPLOADCAPTCHA
 >
-> - chkCase = ***1 in case it's sensitive*** ```- optional```
+> - iscase = `true`, if image captcha text is case-sensitive `- optional`
 >
-> - affiliateid = ***affiliateID*** ```- optional```
+> - isphrase = `true`, text contains at least one space `- optional`
+>
+> - ismath = `true`, instructs worker that a math captcha has to be calculated `- optional`
+>
+> - alphanumeric = `1`, captcha text contains digits only or `2` if it contains letters only `- optional`
+>
+> - minlength = `number` - minimum text length, `0` is default, if defined, give bigger or equal to `1` `- optional`
+>
+> - maxlength = `number` - maximum text length, `0` is default (disabled), if defined it should be bigger than `minlength` `- optional`
+>
+> - affiliateid = ***affiliateID*** `- optional`
 > -------
 > Username & password authentication
 
