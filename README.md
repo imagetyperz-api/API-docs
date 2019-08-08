@@ -451,7 +451,9 @@ Eg.  ```123|polum```
 
 - ```ERROR: INVALID_IMAGE_SIZE_30_KB``` - The uploading image file must be 30 KB.
 
-- ```ERROR: NOT_DECODED``` - The captcha has timedout
+- ```ERROR: NOT_DECODED``` - This is not really an error, just informs the captcha is still under completion. When you get this, ***retry*** after 5 seconds
+
+- ```ERROR: IMAGE_TIMED_OUT``` - Happens when captcha timed out. In other words, it wasn't completed by our workers in time
 
 
 ## reCAPTCHA
@@ -593,8 +595,6 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
-- ```ERROR: NOT_DECODED``` - This is a ***positive*** error, which informs the captcha is still under completion. When you get this, ***retry*** after 5 seconds
-
 - ```ERROR: INVALID_DOMAIN``` - Wrong domain. Check your domain.
 
 - ```ERROR: INVALID_SITEKEY```- Wrong site key. Check your site key.
@@ -602,6 +602,10 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 - ```ERROR: AUTOMATED_QUERIES``` - Proxy sent is blocked temporarily. Change your proxy.
 
 - ```ERROR: NOT_INVISIBLE``` - Captcha is not invisible
+
+- ```ERROR: NOT_DECODED``` - This is not really an error, just informs the captcha is still under completion. When you get this, ***retry*** after 5 seconds
+
+- ```ERROR: IMAGE_TIMED_OUT``` - Happens when captcha timed out. In other words, it wasn't completed by our workers in time
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
