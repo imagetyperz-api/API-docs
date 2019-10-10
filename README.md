@@ -254,7 +254,11 @@ We're providing solving solutions for this reCaptcha as well, although we are al
 Next major captcha that came out after Google's reCAPTCHA. This captcha, asks the user to complete puzzle. When the puzzle is completed, three codes are sent back and needed in order to validate it.
 
 ### Capy
-The newest, same as Geetest, requires to solve a puzzle. A response is generated, which looks like mouse coordinates of the solving of captcha. The more the mouse/puzzle piece is moved in order to solve the captcha, the bigger the response is.
+Same as Geetest, requires to solve a puzzle. A response is generated, which looks like mouse coordinates of the solving of captcha. The more the mouse/puzzle piece is moved in order to solve the captcha, the bigger the response is.
+
+### hCaptcha
+Similar to capy and reCAPTCHA in solving, it requires a pageurl and sitekey in order for it to be solved. It's also the newest one.
+
 
 Endpoints
 --------------
@@ -609,14 +613,16 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-## Capy
+## Capy & hCaptcha
+
+This are two different captcha types, but both are similar to reCAPTCHA. They require a `pageurl` and `sitekey` for solving. hCaptcha is the newest one.
 
 ### IMPORTANT
-For this captcha, the reCAPTCHA endpoints are used (endpoints explained above), except that there's one small difference.
+For this two captcha types, the reCAPTCHA endpoints are used (endpoints explained above), except that there's one small difference for each.
 
-The `pageurl` parameter should have at the end of it `--capy` added. This instructs our system it's a capy captcha. This is a temporar change. It will be changed in the future, to have it's own endpoints.
+The `pageurl` parameter should have at the end of it `--capy` added for Capy captcha and `--hcaptcha` for the hCaptcha. This instructs our system it's a capy captcha or hCaptcha. It will be changed in the future, to have it's own endpoints.
 
-For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy`. Capy requires a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA endpoints.
+For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy` if it's capy or `https://mysite.com--hcaptcha` for hCaptcha. Both require a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA endpoints.
 
 ## GeeTest
 
