@@ -433,7 +433,7 @@ If you authenticate with access token, you can send a HTTP URL instead of the ba
 **Response**
 
 When request is **successful** the response body will contain both a captcha ID and the text recognized.
- 
+
 Eg.  ```123|polum```
 
 - 123 - the captcha ID
@@ -623,6 +623,16 @@ For this two captcha types, the reCAPTCHA endpoints are used (endpoints explaine
 The `pageurl` parameter should have at the end of it `--capy` added for Capy captcha and `--hcaptcha` for the hCaptcha. This instructs our system it's a capy captcha or hCaptcha. It will be changed in the future, to have it's own endpoints.
 
 For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy` if it's capy or `https://mysite.com--hcaptcha` for hCaptcha. Both require a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA endpoints.
+
+#### Observation
+
+Make sure the URL submitted is looking like this:
+
+ `https://mysite.com--hcaptcha`  (**correct**)
+
+and not like this:
+
+`https://mysite.com/--hcaptcha` (*incorrect*)
 
 ## GeeTest
 
