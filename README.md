@@ -464,7 +464,7 @@ Eg.  ```123|polum```
 
 ### Submit reCAPTCHA
 
-In order to solve recaptcha v2 and invisible, there are **2 steps** that have to be made.
+In order to solve regular (v2), invisible or v3 reCAPTCHA, there are **2 steps** that have to be made.
 
 First is to submit the recaptcha details, and then get the **g-response** after it was completed.
 
@@ -480,56 +480,37 @@ There are few optional parameters as well.
 > **Parameters**
 > 
 > - token = ***your_access_token***
->
-> - pageurl = ***page url of website, eg. ```abc.com```***
->
+>- pageurl = ***page url of website, eg. ```abc.com```***
 > - googlekey = ***sitekey of recaptcha, has to be scraped from site***
->
-> - action = UPLOADCAPTCHA
->
+>- action = UPLOADCAPTCHA
 > - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
->
-> - captchaaction = action parameter used in solving v3 recaptcha `- optional`
->
+>- captchaaction = action parameter used in solving v3 recaptcha `- optional`
 > - score = score targeted, check being done against a test recaptcha `- optional`
->
-> - affiliateid = ***affiliateID*** ```- optional```
->
+>- affiliateid = ***affiliateID*** ```- optional```
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
->
 >- useragent = User-Agent used in solving recaptcha `- optional`
->
 > - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
-> -------
-> Username & password authentication
+>- datas = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> 
+>Username & password authentication
 
 >```/POST /captchaapi/UploadRecaptchaV1.ashx```
 
 > **Parameters**
 > 
 > - username = ***your_username***
->
-> - password = ***your_password***
->
+>- password = ***your_password***
 > - pageurl = ***page url of website, eg. ```abc.com```***
->
-> - googlekey = ***sitekey of recaptcha, has to be scraped from site***
->
+>- googlekey = ***sitekey of recaptcha, has to be scraped from site***
 > - action = UPLOADCAPTCHA
->
-> - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
->
+>- recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
 > - captchaaction = action parameter used in solving v3 recaptcha `- optional`
->
-> - score = score targeted, check being done against a test recaptcha `- optional`
->
+>- score = score targeted, check being done against a test recaptcha `- optional`
 > - affiliateid = ***affiliateID*** ```- optional```
->
-> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
->
->- useragent = User-Agent used in solving recaptcha `- optional`
->
-> - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
+>- proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+> - useragent = User-Agent used in solving recaptcha `- optional`
+>- proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
+> - datas = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
 
 **Response**
 
