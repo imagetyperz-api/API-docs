@@ -1,4 +1,4 @@
-Getting started
+Getting started :books:
 ---------------
 
 Using our API and our service is easy. We provide **API libraries** for the most popular programming languages currently out there.
@@ -17,7 +17,7 @@ We take care of our version control with the help of github. The preferred metho
 
 For those not that experienced though, we've provided a download button for each API library, to make it easier.
 
-Libraries
+Libraries :cyclone:
 ------------
 A fast and easy way to integrate our service inside your program
 
@@ -224,7 +224,7 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-ubot
 
 > [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-ubot/archive/master.zip)
 
-Types of captcha
+Types of captcha :palm_tree:
 ----
 ### Image captcha
 
@@ -259,9 +259,20 @@ Same as Geetest, requires to solve a puzzle. A response is generated, which look
 ### hCaptcha
 Similar to capy and reCAPTCHA in solving, it requires a pageurl and sitekey in order for it to be solved. It's also the newest one.
 
+### Tiktok
 
-Endpoints
+Captcha from tiktok website is a bit different than the others, but still similar in some regards. Usually it's asking the user to pick certain objects that are alike, from a handful of objects, which look or don't look similar.
+
+
+Endpoints :sparkles:
 --------------
+:star2: **UPDATE 2020** :star2:
+
+For getting response of any captcha type submitted, use the JSON response endpoint. 
+That's the recommended way of checking for progress and getting solution.
+
+---
+
 If the above libraries do not satisfy your needs, you can build your own library/class, to handle the captcha completion.
 
 The **base** endpoint is `http://www.captchatypers.com`
@@ -272,7 +283,7 @@ When you see something like this `/POST /Forms/RequestBalanceToken.ashx` it's ac
 /POST http://www.captchatypers.com/Forms/RequestBalanceToken.ashx
 ```
 
-### Authentication
+### :satellite: Authentication
 In order to use our service, one has to make a  **HTTP POST** request to our server, which will respond accordingly, depending on what was requested.
 
 Each request you make, needs to contain authentication data, in order for our server to verify it's identity and integrity.
@@ -303,7 +314,7 @@ The responses are in plain text.
 
 In case of error, the response text will start with ```ERROR: ```
 
-### Balance
+### :dollar: Balance​
 
 In order to get the balance of your account, the balance endpoints are used.
 
@@ -451,7 +462,7 @@ Eg.  ```123|polum```
 
 - ```ERROR: INVALID_AFFILIATEID``` - If the affiliateid is not provided, this will be returned.
 
-- ```ERROR: INVALID_IMAGE_FILE``` - No file uploaded or No image type file uploaded.
+- ```ERROR: INVALID_IMAGE_FILE``` - No file uploaded or No image type file uppassword = your password (optional, use only if token is missing)loaded.
 
 - ```ERROR: INVALID_IMAGE_SIZE_30_KB``` - The uploading image file must be 30 KB.
 
@@ -532,7 +543,7 @@ This ```captchaID``` will be used in the 2nd step, to retrieve the g-response af
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-### Retrieve reCaptcha response
+### Retrieve reCaptcha response (deprecated)
 
 Once you have the ```captchaID```, you can start checking for the g-response.
 
@@ -594,32 +605,11 @@ The g-response looks like this: ```03ANcjosrFMmAAFkgiX1...kuZmKh5v0```
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-## Capy & hCaptcha
-
-This are two different captcha types, but both are similar to reCAPTCHA. They require a `pageurl` and `sitekey` for solving. hCaptcha is the newest one.
-
-### IMPORTANT
-For this two captcha types, the reCAPTCHA endpoints are used (endpoints explained above), except that there's one small difference for each.
-
-The `pageurl` parameter should have at the end of it `--capy` added for Capy captcha and `--hcaptcha` for the hCaptcha. This instructs our system it's a capy captcha or hCaptcha. It will be changed in the future, to have it's own endpoints.
-
-For example, if you were to have the `pageurl` = `https://mysite.com` you would send it as `https://mysite.com--capy` if it's capy or `https://mysite.com--hcaptcha` for hCaptcha. Both require a sitekey too, which is sent as reCAPTCHA sitekey, and response is received as reCAPTCHA response, once again using the reCAPTCHA endpoints.
-
-#### Observation
-
-Make sure the URL submitted is looking like this:
-
- `https://mysite.com--hcaptcha`  (**correct**)
-
-and not like this:
-
-`https://mysite.com/--hcaptcha` (*incorrect*)
-
 ## GeeTest
 
 ### Submit GeeTest
 
-GeeTest is anothe captcha that our service can handle.
+GeeTest is another captcha that our service can handle.
 
 Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and using that ID periodically to check for completion.
 > Access token authentication
@@ -681,7 +671,7 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-### Retrieve GeeTest response
+### Retrieve GeeTest response (deprecated)
 
 Once you have the ```captchaID```, you can start checking for the g-response.
 
@@ -729,10 +719,138 @@ Use the 3 codes to bypass the geetest captcha.
 **Errors**
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
-
 - ```ERROR: INVALID_GEETEST_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## Capy
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadCapyCaptchaUser.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchatype = **12**
+> - pageurl = **the URL where you got the captcha**
+> - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
+> - action = **UPLOADCAPTCHA**
+> - affiliateid = ***affiliateID*** ```- optional```
+> - user_agent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## hCaptcha
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadHCaptchaUser.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchatype = **11**
+> - pageurl = **the URL where you got the captcha**
+> - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
+> - action = **UPLOADCAPTCHA**
+> - affiliateid = ***affiliateID*** ```- optional```
+> - user_agent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## Tiktok
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadTikTokCaptchaUser.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchatype = **10**
+> - pageurl = **the URL where you got the captcha**
+> - cookie_input = **cookies that will be set when solving captcha**
+> - action = **UPLOADCAPTCHA**
+> - affiliateid = ***affiliateID*** ```- optional```
+> - user_agent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+## 
+
+## (NEW) Response JSON endpoint
+
+This is the recommended way of getting the response for any captcha type in JSON format, once ID of captcha was received from submission.
+
+> Access token authentication (or username & password, deprecated)
+
+>```GET /captchaapi/GetCaptchaResponseJson.ashx ```
+
+> **Parameters**
+>
+> - token = ***your_access_token***
+> - username=**your_username** (token is preferred)
+> - password=**your_password** (token is preferred)
+> - captchaid = ***```captchaID``` gathered before***
+> - action = GETTEXT
+
+Response looks like this
+
+```json
+{
+  "CaptchaId": 176707908, 
+  "Response": "03AGdBq24PBCbwiDRaS_MJ7Z...mYXMPiDwWUyEOsYpo97CZ3tVmWzrB", 
+  "Cookie_OutPut": "", 
+  "Proxy_reason": "", 
+  "Recaptcha score": 0.0, 
+  "Status": "Solved"
+}
+```
 
 ## Other
 
@@ -772,7 +890,7 @@ The ```captchaID``` that was wrong has to be sent along with the authentication 
 
 In case of success, server will respond with ```SUCCESS```
 
-### Was proxy used
+### Was proxy used (deprecated)
 
 A way to check if proxy submitted with captcha was used in solving
 
