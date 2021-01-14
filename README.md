@@ -3,13 +3,7 @@ Getting started :books:
 
 Using our API and our service is easy. We provide **API libraries** for the most popular programming languages currently out there.
 
-On top of this, the source code for them is available on [github](https://github.com/imagetyperz-api), and most of them are available on their own package managers such as:
-
-* npm
-* nuget
-* pypi
-* bower
-* composer
+On top of this, the source code for them is available on [GitHub](https://github.com/imagetyperz-api)
 
 For those more experienced, that want to build their own library [this](#-endpoints) page is intended to help you in doing so.
 
@@ -29,11 +23,6 @@ Library can be installed using [NuGet](https://www.nuget.org/packages/imagetyper
 The github repository contains a ***binary*** folder as well, which contains the library files already compiled.
 
 Github repository contains a **cli** application as well, which is a ***windows client*** for our service. Can be used easily from command-line  and has all the features that our libraries are having.
-
-> Install using nuget
-```
-Install-Package imagetyperz-api-latest
-```
 
 > Clone from github
 ```
@@ -56,11 +45,6 @@ All you have to do is open the file and pip will get installed.
 
 Once that's done, you can find pip inside the ***Scripts*** folder, of the python installation.
 
-> Install using pip
-```
-pip2 install imagetyperzapi2
-```
-
 > Clone from github
 ```
 git clone https://github.com/imagetyperz-api/imagetyperz-api-python2
@@ -74,11 +58,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-python2
 ### Python 3.x
 
 Same thing applies to python3. In case you don't have pip already, get it, because that's the easiest to get going, and will help you with next libraries you'll require in the future as well.
-
-> Install using pip
-```
-pip3 install imagetyperzapi3
-```
 
 > Clone from github
 ```
@@ -234,21 +213,31 @@ This is the regular captcha, which we all know, all are familiar with. Those tha
 
 This were one of the 1st type of captchas. Their time is almost over, but some websites are still using it and we're still providing solving solution for this as well.
 
-### reCaptcha V2 (regular)
+### reCAPTCHA V2 (regular)
 
 This is Google's rcaptcha. It's the 2nd version and it's what most websites are using nowadays. It's the captcha that asks you to pick street signs, cars, and so on. Using the libraries while submiting a recaptcha defaults the completion of recaptcha to this type.
 
-### reCaptcha V2 (invisible)
+### reCAPTCHA V2 (invisible)
 
 Similar to V2, but different. With this type of reCaptcha, the front-end user gets asked to complete a captcha while form gets submitted, so user `doesn't know` there's a robot verification, until form is submitted.
 
-### reCaptcha V3 (NEW)
+### reCAPTCHA V3
 
 Latest type of reCaptcha from Google that as of today **22 Aug 2018** is still in beta testing (from what Google advertises)
 
 This reCaptcha somewhat different because it doesn't ask the user anything (for now), but rather Google makes use of the users `experience` with Google services, and returns a token. That token, when verified with the secretkey by the webmaster also returns a score that ranges from `0.1` to `0.9`, `0.9` being the best score and `0.1` the worst.
 
 We're providing solving solutions for this reCaptcha as well, although we are also just like Google into beta testing, as Google goes along too.
+
+### reCAPTCHA Enterprise (v2 & v3) [NEW]
+
+Enterprise captcha was released back in 2020.
+This is targeting bigger companies with lots of traffic. At least for now, in order to use enterprise as a webmaster, Google requires you to apply for it, and puts you through an approval process, before you can create a captcha in their Dev console.
+
+Enterprise captcha is designed to work with all the *non-enteprise* reCAPTCHA types: v2, invisible and v3.
+Most likely their plan is to charge the webmasters for usages, while previously it was all *free* (they still train their AI everytime somebody solves it, whether it's free or paid).
+
+Currently, we're supporting enterprise for v2 and v3.
 
 ### GeeTest 
 Next major captcha that came out after Google's reCAPTCHA. This captcha, asks the user to complete puzzle. When the puzzle is completed, three codes are sent back and needed in order to validate it.
@@ -499,29 +488,57 @@ There are few optional parameters as well.
 > - score = score targeted, check being done against a test recaptcha `- optional`
 >- affiliateid = ***affiliateID*** ```- optional```
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
->- useragent = User-Agent used in solving recaptcha `- optional`
-> - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
-- data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+>- proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
+> - useragent = User-Agent used in solving recaptcha `- optional`
+>- data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> - cookie_input = cookies used in solving reCAPTCHA `- optional`
 >
 Username & password authentication
 
 >```/POST /captchaapi/UploadRecaptchaV1.ashx```
 
 > **Parameters**
-> 
+>
 > - username = ***your_username***
->- password = ***your_password***
+> - password = ***your_password***
 > - pageurl = ***page url of website, eg. ```abc.com```***
->- googlekey = ***sitekey of recaptcha, has to be scraped from site***
+> - googlekey = ***sitekey of recaptcha, has to be scraped from site***
 > - action = UPLOADCAPTCHA
->- recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
+> - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
 > - captchaaction = action parameter used in solving v3 recaptcha `- optional`
->- score = score targeted, check being done against a test recaptcha `- optional`
+> - score = score targeted, check being done against a test recaptcha `- optional`
 > - affiliateid = ***affiliateID*** ```- optional```
->- proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+> - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. `- optional`
 > - useragent = User-Agent used in solving recaptcha `- optional`
->- proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
-- data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> - data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> - cookie_input = cookies used in solving reCAPTCHA `- optional`
+### Submit reCAPTCHA enterprise (2021 update)
+
+Submission is very similar to non-enterprise reCAPTCHA types.
+
+
+> Access token (or user / password) authentication
+
+>```/POST /captchaapi/UploadRecaptchaEnt.ashx```
+
+> **Parameters**
+>
+> - token = ***your_access_token***
+> - username = ***your_username*** (deprecated, token authentication is preferred)
+> - password = ***your_password***
+> - pageurl = ***page url of website, eg. ```abc.com```***
+> - googlekey = ***sitekey of recaptcha, has to be scraped from site***
+> - action = UPLOADCAPTCHA
+> - enterprise_type = v2 or v3 `- optional, defaults to v2`
+> - captchaaction = action parameter used in solving of v3 type `- optional`
+> - score = score targeted, check being done against a test recaptcha `- optional`
+> - affiliateid = ***affiliateID*** ```- optional```
+> - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
+> - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
+> - useragent = User-Agent used in solving recaptcha `- optional`
+> - data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> - cookie_input = cookies used in solving reCAPTCHA `- optional`
 
 **Response**
 
@@ -543,7 +560,13 @@ This ```captchaID``` will be used in the 2nd step, to retrieve the g-response af
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-### Retrieve reCaptcha response (deprecated)
+### Retrieve reCAPTCHA response (deprecated)
+
+**Deprecated**
+
+*Use JSON response endpoint*
+
+---
 
 Once you have the ```captchaID```, you can start checking for the g-response.
 
