@@ -655,7 +655,7 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 >
 > - user_agent = ***user agent goes here*** ```- optional```
 >
-> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > -------
 > Username & password authentication
@@ -680,7 +680,7 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 >
 > - user_agent = ***user agent goes here*** ```- optional```
 >
-> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 
 **Response**
 
@@ -762,7 +762,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
 > - user_agent = ***user agent goes here*** ```- optional```
-> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
 
@@ -774,7 +774,7 @@ Use the 3 codes to bypass the geetest captcha.
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
-- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load capy captcha on worker end
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
@@ -795,7 +795,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
 > - user_agent = ***user agent goes here*** ```- optional```
-> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
 
@@ -807,7 +807,7 @@ Use the 3 codes to bypass the geetest captcha.
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
-- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load hcaptcha on worker end
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
@@ -828,7 +828,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
 > - user_agent = ***user agent goes here*** ```- optional```
-> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:1234:username:password*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
 
@@ -840,11 +840,44 @@ Use the 3 codes to bypass the geetest captcha.
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
-- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load tiktok captcha on worker end
 
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-## 
+## FunCaptcha (Arkose Labs)
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadFunCaptcha.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchatype = **13**
+> - pageurl = **the URL where you got the captcha**
+> - sitekey = **sitekey/publickey used in solving captcha (gathered from URL source code / DOM)**
+> - s_url = **API / source URL, specific for FunCaptcha**
+> - action = **UPLOADCAPTCHA**
+> - data = **extra parameters in JSON format, used when initializing captcha** `- optional`
+> - affiliateid = ***affiliateID*** ```- optional```
+> - user_agent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load funcaptcha captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
 ## (NEW) Response JSON endpoint
 
