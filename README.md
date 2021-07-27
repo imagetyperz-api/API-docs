@@ -649,6 +649,8 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 >
 > - gt = ***geetest captcha gt key***
 >
+> - api_server = ***geetest API domain*** ```- optional```
+>
 > - action = UPLOADCAPTCHA
 >
 > - affiliateid = ***affiliateID*** ```- optional```
@@ -673,6 +675,8 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 > - challenge = ***geetest captcha challenge key***
 >
 > - gt = ***geetest captcha gt key***
+>
+> - api_server = ***geetest API domain*** ```- optional```
 >
 > - action = UPLOADCAPTCHA
 >
