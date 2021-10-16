@@ -799,6 +799,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
 > - user_agent = ***user agent goes here*** ```- optional```
+> - invisible = **1, if hcaptcha is invisible** ```- optional```
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
