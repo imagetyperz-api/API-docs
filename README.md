@@ -358,6 +358,11 @@ In order to use this endpoint, the image file has to be sent encoded as a base64
 
 If you authenticate with access token, you can send a HTTP URL instead of the base64 string. The request has to be made to a different endpoint though.
 
+### Observation
+
+**Solving this type of captcha through service is somewhat different compared to all the other types.
+When it's submitted, the request will *hold* until the worker solves the captcha, after which the response will be generated for that request. The response will contain both the captcha ID and text (solution for captcha). All the other captcha types work a bit differently. With the other captchas, you submit the captcha, get back an ID right on the spot, and using that ID you regularly check for solution.**
+
 
 > Access token authentication (base 64)
 
