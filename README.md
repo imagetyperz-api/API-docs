@@ -698,10 +698,28 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 **Errors**
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
-
 - ```ERROR: INVALID_GEETEST_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load geetest captcha on worker end
-
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+### Submit GeeTestV4
+
+GeeTesV4 is a new version of captcha from geetest
+
+> Access token (or username & password) authentication
+
+>```POST /captchaapi/UploadGeeTestV4.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token*** (preferred method to authenticate, use username & password only when really necessary)
+> - username = account username `- optional` 
+> - password = account password `- optional` 
+> - domain = ***geetest captcha domain***
+> - geetestid = ***geetest captcha ID***
+> - action = UPLOADCAPTCHA
+> - affiliateid = ***affiliateID*** ```- optional```
+> - user_agent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 
 ### Retrieve GeeTest response (deprecated)
 
