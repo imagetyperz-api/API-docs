@@ -248,9 +248,19 @@ Same as Geetest, requires to solve a puzzle. A response is generated, which look
 ### hCaptcha
 Similar to capy and reCAPTCHA in solving, it requires a pageurl and sitekey in order for it to be solved. It's also the newest one.
 
+### FunCaptcha
+
+Similar to capy
+
 ### Tiktok
 
 Captcha from tiktok website is a bit different than the others, but still similar in some regards. Usually it's asking the user to pick certain objects that are alike, from a handful of objects, which look or don't look similar.
+
+### Task (your custom bot)
+
+The task is a totally different concept compared to the other types of captcha. 
+With the other captcha types above, we are instructing our workers to solve that particular captcha and we get a captcha solution back. 
+The task is different. You create a template (bot) [here](https://imagetyperz.net) which will contain actions, step by step. Those actions will be executed on the worker computer. If there is a captcha on the page, you can instruct the worker to solve the captcha, and manually click a button, by using the description field of the template. You will get back the cookies, localStorage, fingerprint and screenshot of the worker's browser. This will make it possible for you to restore the session of the worker, i.e automatically logged into an account. Isn't that nice ? :)
 
 
 Endpoints :sparkles:
@@ -660,7 +670,7 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 >
 > - affiliateid = ***affiliateID*** ```- optional```
 >
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 >
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
@@ -687,7 +697,7 @@ Similar to reCAPTCHA, geetest captcha details are submitted, ID is received and 
 >
 > - affiliateid = ***affiliateID*** ```- optional```
 >
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 >
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 
@@ -718,7 +728,7 @@ GeeTesV4 is a new version of captcha from geetest
 > - geetestid = ***geetest captcha ID***
 > - action = UPLOADCAPTCHA
 > - affiliateid = ***affiliateID*** ```- optional```
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 
 ### Retrieve GeeTest response (deprecated)
@@ -788,7 +798,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
@@ -821,8 +831,9 @@ Use the 3 codes to bypass the geetest captcha.
 > - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 > - invisible = **1, if hcaptcha is invisible** ```- optional```
+> - HcaptchaEnterprise = **extra payload used in loading hcaptcha, e.g rqdata, JSON stringified format** `- optional`
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
@@ -855,7 +866,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - cookie_input = **cookies that will be set when solving captcha**
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
@@ -890,7 +901,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - action = **UPLOADCAPTCHA**
 > - data = **extra parameters in JSON format, used when initializing captcha** `- optional`
 > - affiliateid = ***affiliateID*** ```- optional```
-> - user_agent = ***user agent goes here*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
 > - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
 >
 > 
@@ -902,9 +913,38 @@ Use the 3 codes to bypass the geetest captcha.
 **Errors**
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
-
 - ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load funcaptcha captcha on worker end
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
+## Task (your custom bot)
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadFunCaptcha.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchatype = **16**
+> - template_name = **name of the template that will be executed**
+> - pageurl = **the URL on which the template will be executed**
+> - variables = **variables that are used in the template execution, in stringified JSON format**
+> - action = **UPLOADCAPTCHA**
+> - affiliateid = ***affiliateID*** ```- optional```
+> - useragent = ***user agent goes here*** ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
 ## (NEW) Response JSON endpoint
