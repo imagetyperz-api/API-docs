@@ -256,7 +256,7 @@ Similar to capy
 
 Captcha from tiktok website is a bit different than the others, but still similar in some regards. Usually it's asking the user to pick certain objects that are alike, from a handful of objects, which look or don't look similar.
 
-### Task (your custom bot)
+### Task (Bypass any captchatype)
 
 The task is a totally different concept compared to the other types of captcha. 
 With the other captcha types above, we are instructing our workers to solve that particular captcha and we get a captcha solution back. 
@@ -916,11 +916,11 @@ Use the 3 codes to bypass the geetest captcha.
 - ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load funcaptcha captcha on worker end
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
-## Task (your custom bot)
+## Task (Bypass any captchatype)
 
 > Access token authentication (or user & password)
 
->```POST /captchaapi/UploadFunCaptcha.ashx```
+>```POST /captchaapi/UploadCaptchaTask.ashx```
 
 > **Parameters**
 >
@@ -946,6 +946,36 @@ Use the 3 codes to bypass the geetest captcha.
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
+### Push variables for task
+Update a variable value **while task is running on worker machine**. Useful when dealing with 2FA authentication.
+
+When template reaches an action that uses a variable which wasn't provided with the submission of the task,
+task (while running on worker machine) will wait for variable to be updated through push.
+
+You can use the pushVariables method as many times as you need, even overwriting previously set variables.
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/UploadCaptchaTask.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - captchaid = **ID of task captcha**
+> - pushVariables = **push variables that are used in the template execution, in stringified JSON format**
+> - action = **GETTEXT**
+> 
+
+**Response**
+
+`[{"CaptchaId":123456,"Status":"Push Variables Added"}]`
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
 ## (NEW) Response JSON endpoint
 
