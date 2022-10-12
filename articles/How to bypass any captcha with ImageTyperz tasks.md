@@ -18,6 +18,14 @@ With this the client can literally make his own mini-bot, which will run on work
 When the mini-bot has completed, the user will get the session of the worker, that is: localStorage, cookies and fingerprint.
 He can then use that information and restore the session on his end.
 
+<p align="center">
+    <h3>Video demonstration</h3>
+</p>
+<p align="center">
+    <a href="https://www.youtube.com/watch?v=fZToUFzeomc"><img src="https://i.imgur.com/kwvF3lY.png"/></a>
+</p>
+
+
 ### Templates
 
 An Imagetyperz task template defines the exact steps that the worker should go through. 
