@@ -122,7 +122,7 @@ Each submission is considered a different run of the template, with the specifie
 ```bash
 curl -i -s -k -X $'POST' \
     -H $'Content-Type: application/x-www-form-urlencoded' \
-    --data-binary $'token=YOUR_ACCESS_TOKEN&action=UPLOADCAPTCHA&pageurl=https://imagetyperz.net/automation/login&variables={"username": "abc", "password": "paZZW0rd"}&template_name=Login test page&captchatype=16' \
+    --data-binary $'token=YOUR_ACCESS_TOKEN&action=UPLOADCAPTCHA&useragent=YOUR_USER_AGENT&pageurl=https://imagetyperz.net/automation/login&variables={"username": "abc", "password": "paZZW0rd"}&template_name=Login test page&captchatype=16' \
 http://captchatypers.com/captchaapi/UploadCaptchaTask.ashx
 
 
@@ -131,6 +131,13 @@ http://captchatypers.com/captchaapi/UploadCaptchaTask.ashx
 ```
 
 Use the returned captchaID like a regular captcha to get the solution.
+
+### IMPORTANT
+
+**Some websites will respond differently, if connected from mobile or desktop. If that's the case, make sure
+you use the same user agent used when creating the template, or at least from the same platform, when you submit a new task.**
+
+Although `useragent` parameter is optional, it can be very important.
 
 To find out all the information regarding the API for submitting tasks, check our [API docs](https://github.com/imagetyperz-api/API-docs#task-bypass-any-captchatype-1)
 
