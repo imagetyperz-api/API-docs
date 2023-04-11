@@ -32,8 +32,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-csharp
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-csharp
 )
 
-> [Download >](https://github.com/imagetyperz-api/imagetyperz-api-csharp/archive/master.zip)
-
 ### Python 2.x
 This is how you can get the library for python version 2. We have it for python3 as well, below.
 
@@ -53,8 +51,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-python2
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-python2
 )
 
-> [Download >](https://github.com/imagetyperz-api/imagetyperz-api-python2/archive/master.zip)
-
 ### Python 3.x
 
 Same thing applies to python3. In case you don't have pip already, get it, because that's the easiest to get going, and will help you with next libraries you'll require in the future as well.
@@ -66,9 +62,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-python3
 
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-python3
 )
-
-> [Download >](https://github.com/imagetyperz-api/imagetyperz-api-python3/archive/master.zip)
-
 
 ### NodeJS
 
@@ -89,9 +82,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 )
-
-> [Download >](https://github.com/imagetyperz-api/imagetyperz-api-nodejs/archive/master.zip)
-
 
 ### Javascript
 
@@ -115,8 +105,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-javascript
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-javascript
 )
 
-> [Download >](https://github.com/imagetyperz-api/imagetyperz-api-javascript/archive/master.zip)
-
 ### Java
 
 For Java, similar to C#, we have a **cli** application, which is cross-platform, since it's built with Java, runs on everything Java runs.
@@ -130,8 +118,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-java/
 
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-java/
 )
-
-> [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-java//archive/master.zip)
 
 ### PHP
 
@@ -152,8 +138,6 @@ git clone git clone https://github.com/imagetyperz-api/imagetyperz-api-php
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-php
 )
 
-> [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-php/archive/master.zip)
-
 
 ### Ruby
 
@@ -172,8 +156,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-ruby
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-ruby
 )
 
-> [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-ruby/archive/master.zip)
-
 ### Perl
 
 We have a library for the ***good-ol'-perl*** as well
@@ -185,8 +167,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-perl
 
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-perl
 )
-
-> [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-perl/archive/master.zip)
 
 ### UBot
 
@@ -200,8 +180,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-ubot
 
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-ubot
 )
-
-> [Download >]( https://github.com/imagetyperz-api/imagetyperz-api-ubot/archive/master.zip)
 
 Types of captcha :palm_tree:
 ----
@@ -1166,5 +1144,3 @@ For linux, here's the usage of the script: `./linux_hosts.py 127.0.0.1 site.com`
 
 > [View on github >]( https://github.com/imagetyperz-api/gates
 )
-
-> [Download >]( https://github.com/imagetyperz-api/gates/archive/master.zip)
