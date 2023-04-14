@@ -32,26 +32,7 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-csharp
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-csharp
 )
 
-### Python 2.x
-This is how you can get the library for python version 2. We have it for python3 as well, below.
-
-**pip** is a popular package manager for python, which usually comes installed with the OS python installation, in case of linux.
-
-If you're on windows and not linux or mac, first, **make sure you have python2 installed**, and grab download pip installation file from [here](https://bootstrap.pypa.io/get-pip.py)
-
-All you have to do is open the file and pip will get installed. 
-
-Once that's done, you can find pip inside the ***Scripts*** folder, of the python installation.
-
-> Clone from github
-```
-git clone https://github.com/imagetyperz-api/imagetyperz-api-python2
-```
-
-> [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-python2
-)
-
-### Python 3.x
+### Python
 
 Same thing applies to python3. In case you don't have pip already, get it, because that's the easiest to get going, and will help you with next libraries you'll require in the future as well.
 
@@ -83,7 +64,7 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 )
 
-### Javascript
+### JavaScript
 
 Similar to the nodejs library, this library works in a very similar fashion, only difference is that this one is intended to work in browser while the other one on server, with nodejs. 
 
@@ -156,18 +137,6 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-ruby
 > [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-ruby
 )
 
-### Perl
-
-We have a library for the ***good-ol'-perl*** as well
-
-> Clone from github
-```
-git clone https://github.com/imagetyperz-api/imagetyperz-api-perl
-```
-
-> [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-perl
-)
-
 ### UBot
 
 Although not a real programming language, 
@@ -207,7 +176,7 @@ This reCaptcha somewhat different because it doesn't ask the user anything (for 
 
 We're providing solving solutions for this reCaptcha as well, although we are also just like Google into beta testing, as Google goes along too.
 
-### reCAPTCHA Enterprise (v2 & v3) [NEW]
+### reCAPTCHA Enterprise (v2 & v3)
 
 Enterprise captcha was released back in 2020.
 This is targeting bigger companies with lots of traffic. At least for now, in order to use enterprise as a webmaster, Google requires you to apply for it, and puts you through an approval process, before you can create a captcha in their Dev console.
@@ -471,22 +440,23 @@ There are few optional parameters as well.
 >```/POST /captchaapi/UploadRecaptchaToken.ashx```
 
 > **Parameters**
-> 
+>
 > - token = ***your_access_token***
->- pageurl = ***page url of website, eg. ```abc.com```***
+> - pageurl = ***page url of website, eg. ```abc.com```***
 > - googlekey = ***sitekey of recaptcha, has to be scraped from site***
->- action = UPLOADCAPTCHA
+> - action = UPLOADCAPTCHA
 > - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
->- captchaaction = action parameter used in solving v3 recaptcha `- optional`
+> - captchaaction = action parameter used in solving v3 recaptcha `- optional`
+> - domain = used in loading reCAPTCHA interface, default: www.google.com (alternative: recaptcha.net) `- optional`
 > - score = score targeted, check being done against a test recaptcha `- optional`
->- affiliateid = ***affiliateID*** ```- optional```
+> - affiliateid = ***affiliateID*** ```- optional```
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
->- proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
+> - proxytype = ```HTTP```, in case proxy parameter is set. Currently, only HTTP proxies are supported. ```- optional```
 > - useragent = User-Agent used in solving recaptcha `- optional`
->- data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
+> - data-s = required with some recaptchas. A one-time token generated with each captcha loaded `- optional`
 > - cookie_input = cookies used in solving reCAPTCHA `- optional`
 >
-Username & password authentication
+> Username & password authentication
 
 >```/POST /captchaapi/UploadRecaptchaV1.ashx```
 
@@ -499,6 +469,7 @@ Username & password authentication
 > - action = UPLOADCAPTCHA
 > - recaptchatype = can be one of this 3 values: `1` - normal, `2` - invisible, `3` - v3 (it's optional, defaults to `1`)
 > - captchaaction = action parameter used in solving v3 recaptcha `- optional`
+> - domain = used in loading reCAPTCHA interface, default: www.google.com (alternative: recaptcha.net) `- optional`
 > - score = score targeted, check being done against a test recaptcha `- optional`
 > - affiliateid = ***affiliateID*** ```- optional```
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
@@ -525,6 +496,7 @@ Submission is very similar to non-enterprise reCAPTCHA types.
 > - action = UPLOADCAPTCHA
 > - enterprise_type = v2 or v3 `- optional, defaults to v2`
 > - captchaaction = action parameter used in solving of v3 type `- optional`
+> - domain = used in loading reCAPTCHA interface, default: www.google.com (alternative: recaptcha.net) `- optional`
 > - score = score targeted, check being done against a test recaptcha `- optional`
 > - affiliateid = ***affiliateID*** ```- optional```
 > - proxy = ***if given, captcha will be solved using proxy, eg. ```12.34.56.78:1234``` also works with private proxies (auth) like this: ```12.34.56.78:1234:username:password```*** ```- optional```
@@ -809,6 +781,7 @@ Use the 3 codes to bypass the geetest captcha.
 > - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
 > - action = **UPLOADCAPTCHA**
 > - affiliateid = ***affiliateID*** ```- optional```
+> - apiEndpoint = domain used in loading of hcaptcha interface, default: `hcaptcha.com` - `optional`
 > - useragent = ***user agent goes here*** ```- optional```
 > - invisible = **1, if hcaptcha is invisible** ```- optional```
 > - HcaptchaEnterprise = **extra payload used in loading hcaptcha, e.g rqdata, JSON stringified format** `- optional`
@@ -894,6 +867,41 @@ Use the 3 codes to bypass the geetest captcha.
 - ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load funcaptcha captcha on worker end
 - ```ERROR: LIMIT_EXCEED``` - Server is overloaded
 
+## Turnstile (Cloudflare)
+
+> Access token authentication (or user & password)
+
+>```POST /captchaapi/Uploadturnstile.ashx```
+
+> **Parameters**
+>
+> - token = ***your access token***
+> - username = ***your username*** (token is preferred)
+> - password = **your password** (token is preferred)
+> - pageurl = **the URL where you got the captcha**
+> - sitekey = **sitekey used in solving captcha (gathered from URL source code / DOM)**
+> - action = **UPLOADCAPTCHA**
+> - affiliateid = ***affiliateID*** ```- optional```
+> - domain = domain used in loading turnstile interface, default: `challenges.cloudflare.com` - `optional`
+> - taction = used in loading turnstile interface, similar to reCAPTCHA `- optional`
+> - data = extra parameter used in loading turnstile interface `- optional`
+> - useragent = user agent used in solving the captcha ```- optional```
+> - proxy = ***eg. 123.45.67.89:1234 or 12.34.56.78:123:username:password*** ```- optional```
+>
+> 
+
+**Response**
+
+`captchaID` is returned back, use it with response JSON endpoint to retrieve solution.
+
+**Errors**
+
+- ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
+
+- ```ERROR: INVALID_CAPTCHA_DATA``` - Keys expired or other reason for not being able to load capy captcha on worker end
+
+- ```ERROR: LIMIT_EXCEED``` - Server is overloaded
+
 ## Task (Bypass any captchatype)
 
 > Access token authentication (or user & password)
@@ -955,7 +963,7 @@ You can use the pushVariables method as many times as you need, even overwriting
 
 - ```ERROR: AUTHENTICATION_FAILED``` - Provided username and password and/or access key are invalid.
 
-## (NEW) Response JSON endpoint
+## Response JSON endpoint
 
 This is the recommended way of getting the response for any captcha type in JSON format, once ID of captcha was received from submission.
 
