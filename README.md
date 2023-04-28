@@ -25,7 +25,7 @@ The github repository contains a ***binary*** folder as well, which contains the
 Github repository contains a **cli** application as well, which is a ***windows client*** for our service. Can be used easily from command-line  and has all the features that our libraries are having.
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-csharp
 ```
 
@@ -37,7 +37,7 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-csharp
 Same thing applies to python3. In case you don't have pip already, get it, because that's the easiest to get going, and will help you with next libraries you'll require in the future as well.
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-python3
 ```
 
@@ -52,12 +52,12 @@ We have a library for nodejs, for running on server side, and a library for java
 
 
 > Install using npm
-```
+```bash
 npm install imagetyperz-api
 ```
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 ```
 
@@ -69,22 +69,43 @@ git clone https://github.com/imagetyperz-api/imagetyperz-api-nodejs
 Similar to the nodejs library, this library works in a very similar fashion, only difference is that this one is intended to work in browser while the other one on server, with nodejs. 
 
 > Install using npm
-```
+```bash
 npm install imagetyperz-api-client
 ```
 
 > Install using bower
-```
+```bash
 bower install imagetyperz-api-client
 ```
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-javascript
 ```
 
 > [View on github >](https://github.com/imagetyperz-api/imagetyperz-api-javascript
 )
+
+### Go
+
+The Go language is finally starting to get the popularity it deserves.
+
+We developed a library for Go, so you can use it in your projects without too much hassle.
+
+> Add library to your Go project
+
+```bash
+go get github.com/imagetyperz-api/imagetyperz-api-go
+```
+
+> Clone from github
+
+```bash
+git clone https://github.com/imagetyperz-api/imagetyperz-api-go/
+```
+
+> [View on github >]( https://github.com/imagetyperz-api/imagetyperz-api-go/
+> )
 
 ### Java
 
@@ -93,7 +114,7 @@ For Java, similar to C#, we have a **cli** application, which is cross-platform,
 Another thing to keep in mind is there is a folder ***binary*** which has the library already compiled, as well as the cli application.
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-java/
 ```
 
@@ -107,12 +128,12 @@ Although PHP has lost some popularity in the past years, I think it's safe to sa
 We've published the library on both composer aka [packagist](http://packagist.org/) and github
 
 > Install using composer
-```
+```bash
 composer require imagetyperzapi/imagetyperzapi
 ```
 
 > Clone from github
-```
+```bash
 git clone git clone https://github.com/imagetyperz-api/imagetyperz-api-php
 ```
 
@@ -125,12 +146,12 @@ git clone git clone https://github.com/imagetyperz-api/imagetyperz-api-php
 For ruby, the API library can be installed with [bundle](http://bundler.io/) by modiying the ***Gemfile*** or you can clone it from github and use it directly
 
 > Add this line to Gemfile and run ```bundle install```
-```
+```bash
 gem "imagetyperzapi", :git => "git://github.com/imagetyperz-api/imagetyperz-api-ruby.git"
 ```
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-ruby
 ```
 
@@ -143,7 +164,7 @@ Although not a real programming language,
 UBot might be the choice when it comes to some quick automation
 
 > Clone from github
-```
+```bash
 git clone https://github.com/imagetyperz-api/imagetyperz-api-ubot
 ```
 
