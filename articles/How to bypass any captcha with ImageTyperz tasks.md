@@ -168,6 +168,8 @@ When template reaches action with variable that requires push, it will hold unti
 
 Tasks that are completed successfully will return the following:
 
+- lastUrl
+- lastScreenshot
 - cookies
 - localStorage
 - fingerprint
