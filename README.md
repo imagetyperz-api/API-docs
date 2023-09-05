@@ -1009,9 +1009,17 @@ Response looks like this
   "Cookie_OutPut": "", 
   "Proxy_reason": "", 
   "Recaptcha score": 0.0, 
+  "UserAgent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/117.0",
+  "respkey": "",
   "Status": "Solved"
 }
 ```
+
+**Observation**
+
+`respkey` - is populated only for hcaptcha.
+
+`UserAgent` - is the userAgent that was used when solving the captcha.  Some websites require the use of the same userAgent.
 
 ## Other
 
